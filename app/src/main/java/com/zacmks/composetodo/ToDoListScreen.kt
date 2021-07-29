@@ -116,6 +116,7 @@ fun ToDoFieldAndButton(
 ) {
     val keyboardController = LocalSoftwareKeyboardController.current
 
+    Divider(Modifier.fillMaxWidth())
     Row(Modifier.fillMaxWidth()) {
         TextField(
             value = text, onValueChange = onTextChange,
