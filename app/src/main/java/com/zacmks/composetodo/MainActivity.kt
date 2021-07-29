@@ -11,7 +11,7 @@ import com.zacmks.composetodo.ui.theme.ComposeToDoTheme
 
 class MainActivity : ComponentActivity() {
 
-    val toDoViewModel by viewModels<ToDoViewModel>()
+    private val toDoViewModel by viewModels<ToDoViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
