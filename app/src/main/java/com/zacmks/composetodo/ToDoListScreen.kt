@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
@@ -40,7 +41,7 @@ fun ToDoListScreen(
     Scaffold(topBar = {
         val deleteEnabled = selectedItems.isNotEmpty()
         TopAppBar(
-            title = { Text("ToDo List") },
+            title = { Text(stringResource(id = R.string.app_name)) },
             actions = {
                 IconButton(
                     modifier = Modifier.padding(horizontal = 8.dp),
