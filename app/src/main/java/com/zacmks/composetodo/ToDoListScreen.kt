@@ -16,13 +16,11 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun ToDoListScreen() {
+fun ToDoListScreen(viewModel: ToDoViewModel) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = {
-                    Text("ToDo List")
-                },
+                title = { Text("ToDo List") },
                 actions = {
                     IconButton(
                         modifier = Modifier.padding(horizontal = 8.dp),
@@ -43,7 +41,7 @@ fun ToDoListScreen() {
                 .weight(1.0f)) {
                 items(100) {
                     val (select, setSelected) = remember { mutableStateOf(false) }
-                    ToDoItem("Texto exemplo aphauiopfhaiodufhasdiouahf", select, setSelected)
+                    ToDoItem("Texto exemplo", select, setSelected)
                 }
             }
             Divider()
@@ -68,7 +66,7 @@ fun ToDoListScreen() {
 
 @Composable
 fun ToDoItem(
-    text: String = "Texto Exemplo hahahahahahaha",
+    text: String = "Texto Exemplo",
     selected: Boolean = false,
     setSelected: (Boolean) -> Unit,
 ) {
