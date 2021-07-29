@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.dp
 fun ToDoListScreen(
     items: List<ToDoItem>, selectedItems: List<ToDoItem>,
     onAddItem: (ToDoItem) -> Unit, onToggleItem: (ToDoItem) -> Unit,
-    onDeleteItems: (List<ToDoItem>) -> Unit,
+    onDeleteItems: () -> Unit,
 ) {
     val (text, onTextChange) = rememberSaveable { mutableStateOf("") }
 
@@ -43,7 +43,7 @@ fun ToDoListScreen(
             actions = {
                 IconButton(
                     modifier = Modifier.padding(horizontal = 8.dp),
-                    onClick = { onDeleteItems(selectedItems) },
+                    onClick = { onDeleteItems() },
                     enabled = selectedItems.isNotEmpty()
                 ) {
                     Icon(Icons.Rounded.Delete, contentDescription = "Remover items")

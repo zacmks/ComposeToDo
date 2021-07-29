@@ -34,5 +34,5 @@ fun TodoScreen(viewModel: ToDoViewModel) {
         viewModel.selectedItems,
         viewModel::addItem,
         viewModel::toggleItem,
-        viewModel::removeItems)
+        viewModel::deleteSelected)
 }

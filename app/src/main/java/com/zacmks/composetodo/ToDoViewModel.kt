@@ -24,8 +24,9 @@ class ToDoViewModel : ViewModel() {
         }
     }
 
-    fun removeItems(items: List<ToDoItem>) {
-        toDoItems.removeAll(items)
+    fun deleteSelected() {
+        toDoItems.removeAll(selectedItems)
+        selectedItems.clear()
     }
 
 }
