@@ -15,8 +15,13 @@ class ToDoViewModel : ViewModel() {
         toDoItems.add(item)
     }
 
-    fun selectItem(item: ToDoItem) {
-        selectedItems.add(item)
+    fun toggleItem(item: ToDoItem) {
+        val foundItem = selectedItems.find { it == item }
+        if (foundItem != null) {
+            selectedItems.remove(foundItem)
+        } else {
+            selectedItems.add(item)
+        }
     }
 
     fun removeItems(items: List<ToDoItem>) {

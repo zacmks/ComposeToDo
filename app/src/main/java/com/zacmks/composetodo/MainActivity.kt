@@ -29,5 +29,10 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun TodoScreen(viewModel: ToDoViewModel) {
-    ToDoListScreen(viewModel)
+    ToDoListScreen(
+        viewModel.toDoItems,
+        viewModel.selectedItems,
+        viewModel::addItem,
+        viewModel::toggleItem,
+        viewModel::removeItems)
 }
