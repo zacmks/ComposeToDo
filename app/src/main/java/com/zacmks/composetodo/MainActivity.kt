@@ -33,9 +33,10 @@ class MainActivity : ComponentActivity() {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         setContent {
-            ComposeToDoTheme(darkTheme = true, secondVariant = false) {
+            ComposeToDoTheme(darkTheme = false, secondVariant = true) {
                 Surface(color = MaterialTheme.colors.background) {
                     PlayGround()
+//                    TodoScreen(toDoViewModel)
                 }
             }
         }
