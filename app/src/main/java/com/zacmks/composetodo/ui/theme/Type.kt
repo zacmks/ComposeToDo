@@ -20,6 +20,14 @@ private val Domine = FontFamily(
 )
 
 val Typography = Typography(
+    body1 = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp
+    )
+)
+
+val TypographySecondaryVariant = Typography(
     h4 = TextStyle(
         fontFamily = Montserrat,
         fontWeight = FontWeight.W600,
