@@ -38,15 +38,22 @@ fun ToDoListScreen(
     }
 
     Scaffold(topBar = {
+        val deleteEnabled = selectedItems.isNotEmpty()
         TopAppBar(
             title = { Text("ToDo List") },
             actions = {
                 IconButton(
                     modifier = Modifier.padding(horizontal = 8.dp),
                     onClick = { onDeleteItems() },
-                    enabled = selectedItems.isNotEmpty()
+                    enabled = deleteEnabled
                 ) {
-                    Icon(Icons.Rounded.Delete, contentDescription = "Remover items")
+                    Icon(
+                        Icons.Rounded.Delete,
+                        contentDescription = "Remover items",
+                        tint = LocalContentColor.current.copy(
+                            alpha = if (deleteEnabled) 1.0f else 0.38f
+                        )
+                    )
                 }
             }
         )
@@ -111,12 +118,14 @@ fun ToDoFieldAndButton(
     Row(Modifier.fillMaxWidth()) {
         TextField(
             value = text, onValueChange = onTextChange,
+            singleLine = true,
+            maxLines = 1,
+            textStyle = MaterialTheme.typography.h6,
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
             keyboardActions = KeyboardActions(onDone = {
                 onAddItem()
                 keyboardController?.hide()
             }),
-            maxLines = 1,
             modifier = Modifier.weight(1.0f))
         IconButton(
             onClick = onAddItem,
@@ -129,8 +138,23 @@ fun ToDoFieldAndButton(
     }
 }
 
+
 @Preview(showBackground = true)
 @Composable
 fun PreviewToDoRow() {
-    ToDoRow(ToDoItem("Preview de Todo item"), true, {})
+    ToDoRow(ToDoItem("Preview of Todo item"), true, {})
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewToDoFieldAndButton() {
+    ToDoFieldAndButton("Adding some text", {}, {})
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewToDoListScreen() {
+    val firstItem = ToDoItem("Wash the Car")
+    val secondItem = ToDoItem("Buy Groceries")
+    ToDoListScreen(listOf(firstItem, secondItem), listOf(secondItem), {}, {}, {})
 }
