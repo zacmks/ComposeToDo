@@ -5,11 +5,9 @@ import androidx.lifecycle.ViewModel
 
 class ToDoViewModel : ViewModel() {
 
-    var toDoItems = mutableStateListOf<ToDoItem>()
-        private set
+    val toDoItems = mutableStateListOf<ToDoItem>()
 
-    var selectedItems = mutableStateListOf<ToDoItem>()
-        private set
+    val selectedItems = mutableStateListOf<ToDoItem>()
 
     fun addItem(item: ToDoItem) {
         toDoItems.add(item)
