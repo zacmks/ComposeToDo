@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         setContent {
-            ComposeToDoTheme() {
+            ComposeToDoTheme(darkTheme = true, secondVariant = false) {
                 Surface(color = MaterialTheme.colors.background) {
                     PlayGround()
                 }
