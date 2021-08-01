@@ -5,22 +5,25 @@ import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.compose.material.*
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import com.zacmks.composetodo.ui.theme.ComposeToDoTheme
 
 class MainActivity : ComponentActivity() {
 
-    private val toDoViewModel by viewModels<ToDoViewModel>()
+    private val todoItemViewModel: TodoItemViewModel by viewModels {
+        TodoItemViewModelFactory((application as App).repository)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
 
         setContent {
             ComposeToDoTheme(darkTheme = false, secondVariant = false) {
                 Surface(color = MaterialTheme.colors.background) {
-                    TodoScreen(toDoViewModel)
+                    TodoItemScreen(todoItemViewModel)
                 }
             }
         }
@@ -28,11 +31,12 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun TodoScreen(viewModel: ToDoViewModel) {
-    ToDoListScreen(
-        viewModel.toDoItems,
-        viewModel.selectedItems,
+fun TodoItemScreen(viewModel: TodoItemViewModel) {
+    TodoItemListScreen(
+        viewModel.todoItems,
+        viewModel.isItemChecked,
         viewModel::addItem,
         viewModel::toggleItem,
-        viewModel::deleteSelected)
+        viewModel::deleteSelected
+    )
 }
